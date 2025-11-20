@@ -6,7 +6,7 @@ import ProjectCard from "@/components/ProjectCard";
 import Skills from "@/components/Skills";
 import Services from "@/components/Services";
 import Experience from "@/components/Experience";
-import Testimonials from "@/components/Testimonials";
+import Hackathons from "@/components/Hackathons";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Background from "@/components/Background";
@@ -27,6 +27,12 @@ export default function Home() {
         <Hero />
       </section>
 
+      {/* Section 2: Services */}
+      <section className="snap-start snap-always min-h-screen flex items-center">
+        <div className="w-full">
+          <Services />
+        </div>
+      </section>
 
       {/* Section 3: Projects */}
       <section id="projects" className="snap-start snap-always min-h-screen flex items-center py-20 bg-secondary/5">
@@ -71,13 +77,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 5: Services */}
-      <section className="snap-start snap-always min-h-screen flex items-center">
-        <div className="w-full">
-          <Services />
-        </div>
-      </section>
-
       {/* Section 6: Experience */}
       <section className="snap-start snap-always min-h-screen flex items-center">
         <div className="w-full">
@@ -85,10 +84,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 7: Testimonials */}
+      {/* Section 7: Hackathons */}
       <section className="snap-start snap-always min-h-screen flex items-center">
         <div className="w-full">
-          <Testimonials />
+          <Hackathons />
         </div>
       </section>
 

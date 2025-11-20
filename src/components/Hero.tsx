@@ -171,7 +171,16 @@ export default function Hero() {
               <span className="block mb-2">Hi, I'm Jules</span>
               <span className="text-gradient">Building the Future</span>
               <br />
-              <span className="text-gradient">of Finance</span>
+              <span className="text-gradient inline-flex items-center gap-3 align-middle">
+                of Finance
+                <motion.div
+                  animate={{ y: [0, -10, 0], rotate: [0, 10, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="inline-block"
+                >
+                  <Image src="/btc.png" alt="Bitcoin" width={72} height={72} className="drop-shadow-lg object-contain" />
+                </motion.div>
+              </span>
             </motion.h1>
             
             {/* Description */}

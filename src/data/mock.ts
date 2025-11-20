@@ -48,19 +48,11 @@ export const projects = [
 export const skills = [
   {
     category: "Blockchain",
-    items: ["Solidity", "Hardhat", "Foundry", "Ethers.js", "Web3.js", "IPFS"],
+    items: ["Solidity", "Move (SUI)", "Rust (Beginner)"],
   },
   {
-    category: "Frontend",
-    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-  },
-  {
-    category: "Backend",
-    items: ["Node.js", "NestJS", "PostgreSQL", "Docker", "GraphQL"],
-  },
-  {
-    category: "Finance",
-    items: ["DeFi Protocols", "Trading Algorithms", "Smart Contract Auditing"],
+    category: "Fullstack",
+    items: ["React", "TypeScript", "Tailwind CSS", "Go", "Node.js", "GORM", "Prisma", "PostgreSQL", "Docker", "NestJS"],
   },
 ];
 
@@ -106,26 +98,32 @@ export const services = [
   },
 ];
 
-export const testimonials = [
+export const hackathons = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    role: "CEO at DeFi Solutions",
-    content: "Jules is an exceptional developer. His understanding of both smart contracts and frontend development made our project a huge success.",
-    avatar: "https://placehold.co/100x100/1e1e1e/FFF?text=SJ",
+    name: "ETHGlobal Paris",
+    date: "July 2023",
+    location: "Paris, France",
+    description: "Built a decentralized identity verification system using ZK-proofs.",
+    award: "Best Privacy Project",
+    image: "https://placehold.co/600x400/1e1e1e/FFF?text=ETHGlobal",
   },
   {
     id: 2,
-    name: "Michael Chen",
-    role: "Founder of NFT Art",
-    content: "Working with Jules was a pleasure. He delivered the project on time and the code quality was outstanding. Highly recommended!",
-    avatar: "https://placehold.co/100x100/1e1e1e/FFF?text=MC",
+    name: "Solana Hacker House",
+    date: "September 2023",
+    location: "Berlin, Germany",
+    description: "Developed a high-frequency trading bot on Solana.",
+    award: "3rd Place DeFi Track",
+    image: "https://placehold.co/600x400/1e1e1e/FFF?text=Solana",
   },
   {
     id: 3,
-    name: "Alex Turner",
-    role: "CTO at CryptoTech",
-    content: "One of the best Web3 developers I've worked with. He has a deep knowledge of the Ethereum ecosystem and writes secure code.",
-    avatar: "https://placehold.co/100x100/1e1e1e/FFF?text=AT",
+    name: "Chainlink Constellation",
+    date: "November 2023",
+    location: "Online",
+    description: "Created a cross-chain NFT bridge using CCIP.",
+    award: "Top 20 Finalist",
+    image: "https://placehold.co/600x400/1e1e1e/FFF?text=Chainlink",
   },
 ];
