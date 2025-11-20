@@ -22,44 +22,54 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: false }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group glass-panel overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2"
+      className="group relative rounded-3xl bg-card-bg backdrop-blur-xl border border-glass-border overflow-hidden hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 hover:-translate-y-2"
     >
-      <div className="relative h-48 w-full overflow-hidden">
+      {/* Image Section */}
+      <div className="relative h-64 w-full overflow-hidden">
         <Image
           src={project.image}
           alt={project.title}
           fill
-          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          className="object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-500" />
+        
+        {/* Floating Action Button on Image */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <a 
             href={project.link}
-            className="text-white font-medium hover:underline flex items-center gap-2"
+            className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-primary/90 flex items-center gap-2 shadow-lg"
           >
-            View Project 
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            View Details
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
           </a>
         </div>
       </div>
       
-      <div className="p-6">
-        <h3 className="text-xl font-heading font-bold mb-3 group-hover:text-primary transition-colors">
-          {project.title}
-        </h3>
-        <p className="text-muted text-sm mb-6 line-clamp-2">
+      {/* Content Section */}
+      <div className="p-6 relative">
+        {/* Gradient Border Top */}
+        <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        
+        <div className="mb-4">
+          <h3 className="text-2xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">
+            {project.title}
+          </h3>
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.tags.map((tag) => (
+              <span 
+                key={tag} 
+                className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-md bg-glass-surface text-muted border border-glass-surface-border group-hover:border-primary/20 group-hover:text-primary/80 transition-colors"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+        
+        <p className="text-muted text-sm line-clamp-2 leading-relaxed">
           {project.description}
         </p>
-        
-        <div className="flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <span 
-              key={tag} 
-              className="text-xs px-2.5 py-1 rounded-md bg-secondary/10 text-secondary font-medium border border-secondary/20"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
       </div>
     </motion.div>
   );
