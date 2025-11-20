@@ -10,30 +10,34 @@ import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Background from "@/components/Background";
+import ScrollToTop from "@/components/ScrollToTop";
+import TechMarquee from "@/components/TechMarquee";
+import Stats from "@/components/Stats";
+
 import { projects } from "@/data/mock";
 import { motion } from "framer-motion";
 
-import ScrollToTop from "@/components/ScrollToTop";
-
-import TechMarquee from "@/components/TechMarquee";
-
-import Stats from "@/components/Stats";
-
 export default function Home() {
   return (
-    <main className="min-h-screen text-foreground selection:bg-primary/30 relative">
+    <main className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
       <Background />
       <Navbar />
       <ScrollToTop />
       
-      <Hero />
-      
-      <TechMarquee />
+      {/* Section 1: Hero */}
+      <section className="snap-start snap-always h-screen">
+        <Hero />
+      </section>
 
-      <Stats />
+      {/* Section 2: Tech & Stats */}
+      <section className="snap-start snap-always min-h-screen flex flex-col justify-center bg-background">
+        <TechMarquee />
+        <Stats />
+      </section>
 
-      <section id="projects" className="py-32 bg-secondary/5">
-        <div className="container mx-auto px-6">
+      {/* Section 3: Projects */}
+      <section id="projects" className="snap-start snap-always min-h-screen flex items-center py-20 bg-secondary/5">
+        <div className="container mx-auto px-6 w-full">
           <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -67,17 +71,38 @@ export default function Home() {
         </div>
       </section>
 
-      <Skills />
-      
-      <Services />
+      {/* Section 4: Skills */}
+      <section className="snap-start snap-always min-h-screen flex items-center">
+        <div className="w-full">
+          <Skills />
+        </div>
+      </section>
 
-      <Experience />
+      {/* Section 5: Services */}
+      <section className="snap-start snap-always min-h-screen flex items-center">
+        <div className="w-full">
+          <Services />
+        </div>
+      </section>
 
-      <Testimonials />
+      {/* Section 6: Experience */}
+      <section className="snap-start snap-always min-h-screen flex items-center">
+        <div className="w-full">
+          <Experience />
+        </div>
+      </section>
 
-      <section id="contact" className="py-32 relative overflow-hidden">
+      {/* Section 7: Testimonials */}
+      <section className="snap-start snap-always min-h-screen flex items-center">
+        <div className="w-full">
+          <Testimonials />
+        </div>
+      </section>
+
+      {/* Section 8: Contact */}
+      <section id="contact" className="snap-start snap-always min-h-screen flex items-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 pointer-events-none" />
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="container mx-auto px-6 relative z-10 w-full">
           <div className="max-w-4xl mx-auto text-center mb-12">
             <h2 className="text-5xl font-heading font-bold mb-6">
               Ready to <span className="text-gradient">Collaborate?</span>
@@ -91,7 +116,10 @@ export default function Home() {
         </div>
       </section>
 
-      <Footer />
+      {/* Footer (not snapped) */}
+      <div className="snap-start">
+        <Footer />
+      </div>
     </main>
   );
 }
