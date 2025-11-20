@@ -49,7 +49,7 @@ export default function Skills() {
             >
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-2xl blur opacity-20 group-hover:opacity-60 transition duration-500" />
               <div className="relative bg-card-bg backdrop-blur-xl border border-glass-border rounded-2xl p-8 h-full">
-                <h3 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">
+                <h3 className="text-3xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-white/70">
                   {category.category}
                 </h3>
                 
@@ -78,7 +78,7 @@ export default function Skills() {
                           )}
                         </div>
                       </div>
-                      <span className="text-xs font-medium text-muted group-hover/item:text-white transition-colors text-center">
+                      <span className="text-xs font-medium text-muted group-hover/item:text-foreground transition-colors text-center">
                         {item.replace(" (Beginner)", "").replace(" (SUI)", "")}
                       </span>
                     </motion.div>

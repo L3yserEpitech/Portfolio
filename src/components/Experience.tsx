@@ -112,19 +112,13 @@ export default function Experience() {
                     />
                     
                     <div className="relative glass-panel p-6 h-full border-glass-border hover:border-primary/40 transition-all duration-300 flex flex-col">
-                      {/* Period badge with animation */}
-                      <motion.div 
-                        className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold"
-                        initial={{ scale: 0, rotate: -180 }}
-                        whileInView={{ scale: 1, rotate: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ delay: 0.15 + idx * 0.1, type: "spring" }}
-                      >
+                      {/* Period badge */}
+                      <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold">
                         {job.period}
-                      </motion.div>
+                      </div>
                       
                       <motion.h4 
-                        className="text-xl font-bold mb-3 pr-20"
+                        className="text-xl font-bold mb-3 pr-20 pt-2"
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
@@ -194,7 +188,7 @@ export default function Experience() {
                       x: 4,
                       transition: { type: "spring", stiffness: 300 }
                     }}
-                    className="glass-panel p-6 border-white/5 hover:border-muted/20 transition-all"
+                    className="glass-panel p-6 border-foreground/5 hover:border-muted/20 transition-all"
                   >
                     <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                       <div className="flex-1">
@@ -226,15 +220,9 @@ export default function Experience() {
                           {job.description}
                         </motion.p>
                       </div>
-                      <motion.span 
-                        className="inline-block px-4 py-2 rounded-full bg-white/5 text-muted text-sm font-semibold whitespace-nowrap"
-                        initial={{ scale: 0, rotate: -180 }}
-                        whileInView={{ scale: 1, rotate: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ delay: 0.15, type: "spring" }}
-                      >
+                      <span className="inline-block px-4 py-2 rounded-full bg-foreground/5 text-muted text-sm font-semibold whitespace-nowrap">
                         {job.period}
-                      </motion.span>
+                      </span>
                     </div>
                   </motion.div>
                 ))}
@@ -252,7 +240,7 @@ export default function Experience() {
                 <div className="relative h-20 flex items-center">
                   {/* Base line */}
                   <div className="absolute inset-0 flex items-start pt-4">
-                    <div className="w-full h-1 bg-white/30 rounded-full" />
+                    <div className="w-full h-1 bg-foreground/20 rounded-full" />
                   </div>
 
                   {/* Timeline points for each past job */}
@@ -287,7 +275,7 @@ export default function Experience() {
                         
                         {/* Year label */}
                         <motion.div 
-                          className="px-3 py-1 rounded-full bg-white/5 border border-white/10"
+                          className="px-3 py-1 rounded-full bg-foreground/5 border border-foreground/10"
                           whileHover={{ 
                             backgroundColor: "rgba(255, 255, 255, 0.1)",
                             scale: 1.05

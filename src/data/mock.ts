@@ -57,26 +57,49 @@ export const skills = [
 ];
 
 export const experience = [
+  // Current Roles
   {
     id: 1,
-    role: "Full Stack Developer Intern",
-    company: "TechStart Solutions",
-    period: "2024 - Present",
-    description: "Developing decentralized applications using Next.js and Solidity. Optimizing smart contracts for gas efficiency.",
+    role: "Blockchain Lead",
+    company: "PoC Innovation",
+    period: "September 2025 - Present",
+    description: "Leading blockchain initiatives and organizing workshops and events. Coordinating technical training and community engagement activities.",
   },
   {
     id: 2,
-    role: "Freelance Web Developer",
-    company: "Self-Employed",
-    period: "2022 - 2024",
-    description: "Built custom websites and e-commerce solutions for various clients. Integrated crypto payment gateways.",
+    role: "Fullstack Developer (Part-time)",
+    company: "Ramify",
+    period: "September 2025 - Present",
+    description: "Developing financial products and solutions. Building scalable fullstack applications for the fintech sector.",
   },
   {
     id: 3,
-    role: "Junior Developer",
-    company: "Epitech Project",
-    period: "2023",
-    description: "Led a team of 4 students to build a blockchain-based voting system. Handled the backend architecture.",
+    role: "R&D Developer",
+    company: "PoC Innovation",
+    period: "April 2025 - Present",
+    description: "Developing innovative projects in blockchain, AI, and software engineering. Conducting research and development on cutting-edge technologies.",
+  },
+  {
+    id: 4,
+    role: "Freelance Blockchain/Fullstack Developer",
+    company: "Self-Employed",
+    period: "March 2025 - Present",
+    description: "Building custom blockchain solutions and fullstack applications for various clients. Specializing in Web3 integration and decentralized technologies.",
+  },
+  // Past Experiences
+  {
+    id: 5,
+    role: "Business Developer",
+    company: "Junior Conseil Taker",
+    period: "January 2025 - April 2025",
+    description: "Client relationship management in a junior enterprise environment. Immersed in the entrepreneurial ecosystem and business development.",
+  },
+  {
+    id: 6,
+    role: "Fullstack Developer",
+    company: "Inetum Business Solution",
+    period: "September 2024 - January 2025",
+    description: "Developed a mobile adaptation of Oracle software. Worked on enterprise-level application development and transformation projects.",
   },
 ];
 
