@@ -11,7 +11,7 @@ export default function Testimonials() {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="text-4xl font-heading font-bold text-center mb-16"
         >
           Client <span className="text-gradient">Stories</span>
@@ -23,7 +23,7 @@ export default function Testimonials() {
               key={testimonial.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: idx * 0.2 }}
               className="glass-panel p-8 hover:border-primary/30 transition-all hover:-translate-y-1"
             >

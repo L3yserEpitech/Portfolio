@@ -28,7 +28,7 @@ export default function Services() {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="text-4xl font-heading font-bold text-center mb-16"
         >
           What I <span className="text-gradient">Do</span>
@@ -40,7 +40,7 @@ export default function Services() {
               key={service.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: idx * 0.2 }}
               className="glass-panel p-8 hover:border-primary/30 transition-all hover:-translate-y-1 text-center"
             >

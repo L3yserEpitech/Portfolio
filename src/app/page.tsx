@@ -42,7 +42,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
             >
               <h2 className="text-5xl font-heading font-bold mb-4">
                 Featured <span className="text-gradient">Projects</span>
@@ -54,7 +54,7 @@ export default function Home() {
             <motion.a 
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               href="#" 
               className="text-primary font-medium hover:underline flex items-center gap-2 text-lg"
             >

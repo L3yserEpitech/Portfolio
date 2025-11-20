@@ -11,13 +11,15 @@ export default function Hero() {
       {/* Decorative Elements */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 0.1, scale: 1 }}
+        whileInView={{ opacity: 0.1, scale: 1 }}
+        viewport={{ once: false }}
         transition={{ duration: 1.5, ease: "easeOut" }}
         className="absolute top-40 left-20 w-72 h-72 bg-primary/30 rounded-full blur-[100px] -z-10" 
       />
       <motion.div 
         initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 0.1, scale: 1 }}
+        whileInView={{ opacity: 0.1, scale: 1 }}
+        viewport={{ once: false }}
         transition={{ duration: 1.5, delay: 0.5, ease: "easeOut" }}
         className="absolute bottom-40 right-20 w-96 h-96 bg-secondary/30 rounded-full blur-[100px] -z-10" 
       />
@@ -26,7 +28,8 @@ export default function Hero() {
         {/* Profile Image */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
           className="relative w-32 h-32 mx-auto mb-8"
         >
@@ -45,7 +48,8 @@ export default function Hero() {
         {/* Status Badge */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-medium mb-8 backdrop-blur-sm"
         >
@@ -59,7 +63,8 @@ export default function Hero() {
         {/* Main Heading */}
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold mb-6 leading-[1.1]"
         >
@@ -70,7 +75,8 @@ export default function Hero() {
         {/* Description */}
         <motion.p 
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-12 leading-relaxed"
         >
@@ -80,7 +86,8 @@ export default function Hero() {
         {/* CTA Buttons */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.5 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
         >
@@ -105,7 +112,8 @@ export default function Hero() {
         {/* Social Links */}
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.6 }}
           className="flex items-center justify-center gap-6"
         >
@@ -139,7 +147,8 @@ export default function Hero() {
       {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
         transition={{ duration: 1, delay: 1 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2"
       >

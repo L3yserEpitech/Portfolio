@@ -10,7 +10,7 @@ export default function Experience() {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="text-4xl font-heading font-bold text-center mb-16"
         >
           Professional <span className="text-gradient">Journey</span>
@@ -22,7 +22,7 @@ export default function Experience() {
               key={job.id}
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: idx * 0.2 }}
               className="relative"
             >

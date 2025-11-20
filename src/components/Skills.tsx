@@ -10,7 +10,7 @@ export default function Skills() {
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           className="text-5xl font-heading font-bold text-center mb-20"
         >
           Technical <span className="text-gradient">Arsenal</span>
@@ -22,7 +22,7 @@ export default function Skills() {
               key={category.category}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ delay: idx * 0.1 }}
               className="glass-panel p-8 hover:border-primary/30 transition-colors group"
             >
