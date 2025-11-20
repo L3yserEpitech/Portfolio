@@ -2,40 +2,45 @@
 
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
+  const [activeSection, setActiveSection] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const [activeSection, setActiveSection] = useState("");
+  const totalSections = 8;
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["about", "projects", "skills", "services", "experience", "contact"];
-      const scrollPosition = window.scrollY + 100;
+      const mainElement = document.querySelector('main');
+      if (!mainElement) return;
 
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const offsetTop = element.offsetTop;
-          const offsetHeight = element.offsetHeight;
+      const sections = mainElement.querySelectorAll('section.snap-start');
+      const scrollTop = mainElement.scrollTop;
+      const viewportHeight = window.innerHeight;
 
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
+      let currentSection = 0;
+      sections.forEach((section, index) => {
+        const element = section as HTMLElement;
+        const offsetTop = element.offsetTop;
+        const offsetHeight = element.offsetHeight;
+
+        // Check if this section is in view
+        if (scrollTop >= offsetTop - viewportHeight / 3) {
+          currentSection = index;
         }
-      }
+      });
+
+      setActiveSection(currentSection);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const mainElement = document.querySelector('main');
+    if (mainElement) {
+      mainElement.addEventListener("scroll", handleScroll);
+      handleScroll(); // Initial check
+      return () => mainElement.removeEventListener("scroll", handleScroll);
+    }
   }, []);
 
   const navLinks = [
@@ -47,8 +52,6 @@ export default function Navbar() {
     { name: "Contact", href: "#contact" },
   ];
 
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/70 border-b border-glass-border">
@@ -59,16 +62,16 @@ export default function Navbar() {
           
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-8 font-medium text-sm">
-            {navLinks.map((link) => (
+            {navLinks.map((link, idx) => (
               <Link 
                 key={link.name}
                 href={link.href} 
                 className={`transition-colors relative ${
-                  activeSection === link.href.substring(1) ? "text-primary" : "hover:text-primary text-muted"
+                  activeSection === idx ? "text-primary" : "hover:text-primary text-muted"
                 }`}
               >
                 {link.name}
-                {activeSection === link.href.substring(1) && (
+                {activeSection === idx && (
                   <motion.div
                     layoutId="activeSection"
                     className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
@@ -108,11 +111,14 @@ export default function Navbar() {
           </div>
         </div>
         
-        {/* Scroll Progress Bar */}
-        <motion.div
-          className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-main origin-left"
-          style={{ scaleX }}
-        />
+        {/* Scroll Progress Bar - Based on sections */}
+        <div className="absolute bottom-0 left-0 right-0 h-[2px]">
+          <motion.div
+            className="h-full bg-gradient-to-r from-primary to-secondary"
+            animate={{ width: `${(activeSection / (totalSections - 1)) * 100}%` }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          />
+        </div>
 
         {/* Mobile Menu Overlay */}
         {isMobileMenuOpen && (
@@ -123,13 +129,13 @@ export default function Navbar() {
             className="lg:hidden border-t border-glass-border bg-background/95 backdrop-blur-xl overflow-hidden"
           >
             <div className="container mx-auto px-6 py-8 flex flex-col gap-6">
-              {navLinks.map((link) => (
+              {navLinks.map((link, idx) => (
                 <Link 
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`text-lg font-medium transition-colors ${
-                    activeSection === link.href.substring(1) ? "text-primary" : "text-muted hover:text-primary"
+                    activeSection === idx ? "text-primary" : "text-muted hover:text-primary"
                   }`}
                 >
                   {link.name}
