@@ -8,18 +8,23 @@ export default function Footer() {
           © {new Date().getFullYear()} {profile.name}. All rights reserved.
         </div>
         
-        <div className="flex items-center gap-6">
-          {Object.entries(profile.socials).map(([platform, link]) => (
-            <a 
-              key={platform}
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted hover:text-primary transition-colors capitalize text-sm font-medium"
-            >
-              {platform}
-            </a>
-          ))}
+        <div className="flex flex-col md:flex-row items-center gap-6">
+          <div className="text-xs text-muted/50 font-medium">
+            Built with Next.js, Tailwind & Framer Motion
+          </div>
+          <div className="flex items-center gap-6">
+            {Object.entries(profile.socials).map(([platform, link]) => (
+              <a 
+                key={platform}
+                href={link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted hover:text-primary transition-colors capitalize text-sm font-medium"
+              >
+                {platform}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

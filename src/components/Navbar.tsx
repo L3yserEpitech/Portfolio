@@ -47,6 +47,8 @@ export default function Navbar() {
     { name: "Contact", href: "#contact" },
   ];
 
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/70 border-b border-glass-border">
@@ -55,6 +57,7 @@ export default function Navbar() {
             Jules.
           </Link>
           
+          {/* Desktop Menu */}
           <div className="hidden lg:flex items-center gap-8 font-medium text-sm">
             {navLinks.map((link) => (
               <Link 
@@ -86,6 +89,22 @@ export default function Navbar() {
               </svg>
               Connect Wallet
             </button>
+
+            {/* Mobile Menu Button */}
+            <button 
+              className="lg:hidden p-2 text-muted hover:text-primary transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+              )}
+            </button>
           </div>
         </div>
         
@@ -94,6 +113,36 @@ export default function Navbar() {
           className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-main origin-left"
           style={{ scaleX }}
         />
+
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden border-t border-glass-border bg-background/95 backdrop-blur-xl overflow-hidden"
+          >
+            <div className="container mx-auto px-6 py-8 flex flex-col gap-6">
+              {navLinks.map((link) => (
+                <Link 
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`text-lg font-medium transition-colors ${
+                    activeSection === link.href.substring(1) ? "text-primary" : "text-muted hover:text-primary"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <button 
+                className="flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-primary/10 text-primary font-semibold hover:bg-primary/20 transition-colors"
+              >
+                Connect Wallet
+              </button>
+            </div>
+          </motion.div>
+        )}
       </nav>
     </>
   );

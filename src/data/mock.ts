@@ -105,3 +105,27 @@ export const services = [
     icon: "integration",
   },
 ];
+
+export const testimonials = [
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    role: "CEO at DeFi Solutions",
+    content: "Jules is an exceptional developer. His understanding of both smart contracts and frontend development made our project a huge success.",
+    avatar: "https://placehold.co/100x100/1e1e1e/FFF?text=SJ",
+  },
+  {
+    id: 2,
+    name: "Michael Chen",
+    role: "Founder of NFT Art",
+    content: "Working with Jules was a pleasure. He delivered the project on time and the code quality was outstanding. Highly recommended!",
+    avatar: "https://placehold.co/100x100/1e1e1e/FFF?text=MC",
+  },
+  {
+    id: 3,
+    name: "Alex Turner",
+    role: "CTO at CryptoTech",
+    content: "One of the best Web3 developers I've worked with. He has a deep knowledge of the Ethereum ecosystem and writes secure code.",
+    avatar: "https://placehold.co/100x100/1e1e1e/FFF?text=AT",
+  },
+];

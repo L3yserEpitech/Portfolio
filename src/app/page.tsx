@@ -6,19 +6,31 @@ import ProjectCard from "@/components/ProjectCard";
 import Skills from "@/components/Skills";
 import Services from "@/components/Services";
 import Experience from "@/components/Experience";
+import Testimonials from "@/components/Testimonials";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Background from "@/components/Background";
 import { projects } from "@/data/mock";
 import { motion } from "framer-motion";
 
+import ScrollToTop from "@/components/ScrollToTop";
+
+import TechMarquee from "@/components/TechMarquee";
+
+import Stats from "@/components/Stats";
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 relative">
+    <main className="min-h-screen text-foreground selection:bg-primary/30 relative">
       <Background />
       <Navbar />
+      <ScrollToTop />
       
       <Hero />
+      
+      <TechMarquee />
+
+      <Stats />
 
       <section id="projects" className="py-32 bg-secondary/5">
         <div className="container mx-auto px-6">
@@ -60,6 +72,8 @@ export default function Home() {
       <Services />
 
       <Experience />
+
+      <Testimonials />
 
       <section id="contact" className="py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 pointer-events-none" />
