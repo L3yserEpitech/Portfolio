@@ -1,66 +1,83 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import ProjectCard from "@/components/ProjectCard";
+import Skills from "@/components/Skills";
+import Services from "@/components/Services";
+import Experience from "@/components/Experience";
+import ContactForm from "@/components/ContactForm";
+import Footer from "@/components/Footer";
+import Background from "@/components/Background";
+import { projects } from "@/data/mock";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
+    <main className="min-h-screen bg-background text-foreground selection:bg-primary/30 relative">
+      <Background />
+      <Navbar />
+      
+      <Hero />
+
+      <section id="projects" className="py-32 bg-secondary/5">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
+              <h2 className="text-5xl font-heading font-bold mb-4">
+                Featured <span className="text-gradient">Projects</span>
+              </h2>
+              <p className="text-xl text-muted max-w-lg">
+                A selection of my recent work in DeFi, NFTs, and Fullstack Development.
+              </p>
+            </motion.div>
+            <motion.a 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              href="#" 
+              className="text-primary font-medium hover:underline flex items-center gap-2 text-lg"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              View All Projects
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </motion.a>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, idx) => (
+              <ProjectCard key={project.id} project={project} index={idx} />
+            ))}
+          </div>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <Skills />
+      
+      <Services />
+
+      <Experience />
+
+      <section id="contact" className="py-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 pointer-events-none" />
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h2 className="text-5xl font-heading font-bold mb-6">
+              Ready to <span className="text-gradient">Collaborate?</span>
+            </h2>
+            <p className="text-xl text-muted max-w-2xl mx-auto">
+              Whether you have a question, a project idea, or just want to say hi, I'm always open to discussing new opportunities.
+            </p>
+          </div>
+          
+          <ContactForm />
         </div>
-      </main>
-    </div>
+      </section>
+
+      <Footer />
+    </main>
   );
 }
