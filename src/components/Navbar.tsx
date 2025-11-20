@@ -9,7 +9,7 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const totalSections = 8;
+  const totalSections = 7;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,10 +45,11 @@ export default function Navbar() {
 
   const navLinks = [
     { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
     { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
-    { name: "Services", href: "#services" },
     { name: "Experience", href: "#experience" },
+    { name: "Hackathons", href: "#hackathons" },
     { name: "Contact", href: "#contact" },
   ];
 
