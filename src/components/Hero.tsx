@@ -55,8 +55,8 @@ export default function Hero() {
         }}
       />
 
-      {/* Floating Crypto Coins */}
-      {/* Left Side */}
+      {/* Floating Crypto Coins - Temporarily disabled */}
+      {/* 
       <motion.div
         className="hidden xl:block absolute top-28 left-20 w-28 h-28 cursor-pointer transition-all duration-300"
         animate={{ y: [0, -20, 0] }}
@@ -99,7 +99,6 @@ export default function Hero() {
         <Image src="/cosmos.png" alt="Cosmos" width={96} height={96} className="drop-shadow-lg" />
       </motion.div>
 
-      {/* Right Side */}
       <motion.div
         className="hidden xl:block absolute top-28 right-20 w-32 h-32 cursor-pointer transition-all duration-300"
         animate={{ y: [0, -22, 0] }}
@@ -141,6 +140,7 @@ export default function Hero() {
       >
         <Image src="/avax.png" alt="Avalanche" width={112} height={112} className="drop-shadow-lg" />
       </motion.div>
+      */}
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
