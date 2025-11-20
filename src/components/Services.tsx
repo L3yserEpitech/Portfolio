@@ -29,7 +29,7 @@ export default function Services() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
-          className="text-4xl font-heading font-bold text-center mb-16"
+          className="text-4xl font-heading font-bold text-center mb-16 pt-[60px] md:mt-0"
         >
           What I <span className="text-gradient">Do</span>
         </motion.h2>

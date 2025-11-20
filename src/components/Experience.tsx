@@ -11,7 +11,7 @@ export default function Experience() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
-          className="text-4xl font-heading font-bold text-center mb-16"
+          className="text-4xl font-heading font-bold text-center mb-16 pt-[60px] md:mt-0"
         >
           Professional <span className="text-gradient">Journey</span>
         </motion.h2>

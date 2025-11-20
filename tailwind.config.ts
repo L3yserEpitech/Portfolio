@@ -15,10 +15,13 @@ const config: Config = {
         primary: "var(--primary)",
         secondary: "var(--secondary)",
         accent: "var(--accent)",
+        muted: "var(--text-muted)",
         "card-bg": "var(--card-bg)",
         "card-border": "var(--card-border)",
         "glass-bg": "var(--glass-bg)",
         "glass-border": "var(--glass-border)",
+        "glass-surface": "var(--glass-surface)",
+        "glass-surface-border": "var(--glass-surface-border)",
       },
       fontFamily: {
         sans: ["var(--font-outfit)", "sans-serif"],

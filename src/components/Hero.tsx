@@ -154,7 +154,7 @@ export default function Hero() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 text-primary text-sm font-semibold mb-8"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-glass-surface backdrop-blur-xl border border-glass-surface-border text-primary text-sm font-semibold mb-8"
             >
               <Sparkles className="w-4 h-4" />
               Web3 Developer & Blockchain Enthusiast
@@ -202,7 +202,7 @@ export default function Hero() {
               </a>
               <a 
                 href="#contact"
-                className="group w-full sm:w-auto px-8 py-4 rounded-xl bg-white/5 backdrop-blur-xl border-2 border-white/10 hover:border-primary/50 hover:bg-white/10 transition-all font-semibold text-lg flex items-center justify-center gap-2"
+                className="group w-full sm:w-auto px-8 py-4 rounded-xl bg-glass-surface backdrop-blur-xl border-2 border-glass-surface-border hover:border-primary/50 hover:bg-glass-surface transition-all font-semibold text-lg flex items-center justify-center gap-2"
               >
                 <Code2 className="w-5 h-5" />
                 Let's Connect
@@ -221,7 +221,7 @@ export default function Hero() {
                 href={profile.socials.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3 rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-primary/40 transition-all hover:-translate-y-1"
+                className="group p-3 rounded-xl bg-glass-surface backdrop-blur-xl border border-glass-surface-border hover:border-primary/40 transition-all hover:-translate-y-1"
               >
                 <Github className="w-5 h-5 text-muted group-hover:text-primary transition-colors" />
               </a>
@@ -229,7 +229,7 @@ export default function Hero() {
                 href={profile.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3 rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-primary/40 transition-all hover:-translate-y-1"
+                className="group p-3 rounded-xl bg-glass-surface backdrop-blur-xl border border-glass-surface-border hover:border-primary/40 transition-all hover:-translate-y-1"
               >
                 <Linkedin className="w-5 h-5 text-muted group-hover:text-primary transition-colors" />
               </a>
@@ -237,7 +237,7 @@ export default function Hero() {
                 href={profile.socials.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group p-3 rounded-xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-primary/40 transition-all hover:-translate-y-1"
+                className="group p-3 rounded-xl bg-glass-surface backdrop-blur-xl border border-glass-surface-border hover:border-primary/40 transition-all hover:-translate-y-1"
               >
                 <Twitter className="w-5 h-5 text-muted group-hover:text-primary transition-colors" />
               </a>
@@ -250,7 +250,7 @@ export default function Hero() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, type: "spring", bounce: 0.3 }}
-            className="flex flex-col items-center gap-0"
+            className="hidden lg:flex flex-col items-center gap-0"
           >
             {/* Main image */}
             <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl shadow-primary/20">
@@ -273,7 +273,7 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, -5, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="-mt-4 px-6 py-3 rounded-full bg-white/10 backdrop-blur-xl border border-white/20 shadow-xl flex items-center gap-2"
+              className="-mt-4 px-6 py-3 rounded-full bg-glass-surface backdrop-blur-xl border border-glass-surface-border shadow-xl flex items-center gap-2"
             >
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>

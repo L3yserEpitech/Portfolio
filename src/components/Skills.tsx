@@ -11,7 +11,7 @@ export default function Skills() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
-          className="text-5xl font-heading font-bold text-center mb-20"
+          className="text-5xl font-heading font-bold text-center mb-20 pt-[60px] md:mt-0"
         >
           Technical <span className="text-gradient">Arsenal</span>
         </motion.h2>

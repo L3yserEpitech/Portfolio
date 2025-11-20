@@ -11,8 +11,6 @@ import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import Background from "@/components/Background";
 import ScrollToTop from "@/components/ScrollToTop";
-import TechMarquee from "@/components/TechMarquee";
-import Stats from "@/components/Stats";
 
 import { projects } from "@/data/mock";
 import { motion } from "framer-motion";
@@ -29,11 +27,6 @@ export default function Home() {
         <Hero />
       </section>
 
-      {/* Section 2: Tech & Stats */}
-      <section className="snap-start snap-always min-h-screen flex flex-col justify-center bg-background">
-        <TechMarquee />
-        <Stats />
-      </section>
 
       {/* Section 3: Projects */}
       <section id="projects" className="snap-start snap-always min-h-screen flex items-center py-20 bg-secondary/5">
@@ -44,7 +37,7 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
             >
-              <h2 className="text-5xl font-heading font-bold mb-4">
+              <h2 className="text-5xl font-heading font-bold mb-4 pt-[60px] md:mt-0">
                 Featured <span className="text-gradient">Projects</span>
               </h2>
               <p className="text-xl text-muted max-w-lg">
@@ -104,7 +97,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 pointer-events-none" />
         <div className="container mx-auto px-6 relative z-10 w-full">
           <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-5xl font-heading font-bold mb-6">
+            <h2 className="text-5xl font-heading font-bold mb-6 pt-[60px] md:mt-0">
               Ready to <span className="text-gradient">Collaborate?</span>
             </h2>
             <p className="text-xl text-muted max-w-2xl mx-auto">
