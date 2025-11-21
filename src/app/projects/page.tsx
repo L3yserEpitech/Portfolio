@@ -272,11 +272,6 @@ function ProjectsContent() {
                     </a>
                   )}
                 </div>
-
-                {/* Project number indicator */}
-                <div className="pt-6 text-sm text-muted">
-                  Project {index + 1} of {projects.length}
-                </div>
               </motion.div>
             </div>
           </div>
