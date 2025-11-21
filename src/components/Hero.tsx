@@ -157,7 +157,7 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-glass-surface backdrop-blur-xl border border-glass-surface-border text-primary text-sm font-semibold mb-8"
             >
               <Sparkles className="w-4 h-4" />
-              Web3 Developer & Blockchain Enthusiast
+              {profile.badge}
             </motion.div>
             
             {/* Main heading */}
@@ -191,7 +191,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg md:text-xl text-muted mb-10 leading-relaxed max-w-2xl"
             >
-              3rd year student at <span className="text-primary font-semibold">Epitech</span>, specializing in fullstack development and blockchain technology. I create decentralized applications that bridge traditional finance with Web3.
+              {profile.description}
             </motion.p>
 
             {/* CTA Buttons */}
@@ -303,14 +303,17 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2 text-muted"
         >
           <span className="text-xs font-medium uppercase tracking-wider">Scroll</span>
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
+          {/* Mouse icon */}
+          <div className="relative w-6 h-9 border-2 border-current rounded-full p-1">
+            <motion.div
+              animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="w-1 h-2 bg-current rounded-full mx-auto"
+            />
+          </div>
         </motion.div>
       </motion.div>
     </section>

@@ -2,6 +2,8 @@ export const profile = {
   name: "Jules",
   title: "Web3 Fullstack Developer",
   subtitle: "Epitech Student | Blockchain & Finance Enthusiast",
+  badge: "Web3/Fullstack Developer & Blockchain Enthusiast",
+  description: "Responsable blockchain at PoC Innovation. 3rd year student at Epitech, specializing in fullstack development and blockchain technology. I create decentralized applications that bridge traditional finance with Web3.",
   bio: "I build decentralized applications and financial tools. Passionate about the intersection of finance and technology.",
   socials: {
     github: "https://github.com/",
@@ -33,14 +35,6 @@ export const projects = [
     description: "A dashboard to track your crypto assets across multiple chains. Real-time price updates and portfolio analysis.",
     tags: ["Vue.js", "Web3.js", "CoinGecko API"],
     image: "https://placehold.co/600x400/1e1e1e/FFF?text=Wallet+Tracker",
-    link: "#",
-  },
-  {
-    id: 4,
-    title: "DAO Voting System",
-    description: "On-chain voting system for decentralized autonomous organizations. Secure and transparent governance.",
-    tags: ["Solidity", "Next.js", "Graph Protocol"],
-    image: "https://placehold.co/600x400/1e1e1e/FFF?text=DAO+System",
     link: "#",
   },
 ];
