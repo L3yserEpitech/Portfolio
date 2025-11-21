@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Home } from "lucide-react";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface ProjectsNavbarProps {
   projects: Array<{ id: number; title: string }>;
@@ -11,6 +12,7 @@ interface ProjectsNavbarProps {
 
 export default function ProjectsNavbar({ projects }: ProjectsNavbarProps) {
   const [activeProject, setActiveProject] = useState(0); // 0 = Catalog, 1+ = Projects
+  const isCatalog = activeProject === 0;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,77 +45,158 @@ export default function ProjectsNavbar({ projects }: ProjectsNavbarProps) {
   };
 
   return (
-    <nav className="fixed top-20 left-0 right-0 z-40 px-6">
-      <div className="container mx-auto">
-        <div className="flex items-center justify-between py-4 px-6 rounded-2xl bg-glass-surface/80 backdrop-blur-xl border border-glass-surface-border shadow-lg">
-          {/* Left side - Catalog + Project references */}
-          <div className="flex items-center gap-3">
-            {/* Catalog button */}
-            <button
-              onClick={() => scrollToProject(0)}
-              className={`group relative px-4 py-2 rounded-lg transition-all duration-300 ${
-                activeProject === 0
-                  ? "bg-primary/20 text-primary"
-                  : "text-muted hover:text-foreground hover:bg-glass-surface"
-              }`}
+    <motion.nav
+      animate={{
+        top: isCatalog ? 0 : 80,
+      }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="fixed left-0 right-0 z-50"
+    >
+      <motion.div
+        animate={{
+          paddingLeft: isCatalog ? 0 : 24,
+          paddingRight: isCatalog ? 0 : 24,
+        }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+      >
+        <motion.div
+          className={isCatalog ? "" : "container mx-auto"}
+        >
+          <motion.div
+            animate={{
+              borderRadius: isCatalog ? "0px" : "16px",
+              borderWidth: isCatalog ? "0px 0px 1px 0px" : "1px",
+              boxShadow: isCatalog
+                ? "0 0 0 0 rgba(0, 0, 0, 0)"
+                : "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+            }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="backdrop-blur-xl bg-background/70 border-glass-border"
+          >
+          <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+            {/* Left side - Logo or Catalog + Numbers */}
+            <motion.div
+              animate={{
+                opacity: 1,
+              }}
+              className="flex items-center gap-3"
             >
-              <span className="text-sm font-semibold">Catalog</span>
-              
-              {/* Active indicator */}
-              {activeProject === 0 && (
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
-              )}
-            </button>
+              <AnimatePresence mode="wait">
+                {isCatalog ? (
+                  <motion.div
+                    key="logo"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Link href="/" className="text-2xl font-heading font-bold text-gradient">
+                      Jules.
+                    </Link>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="nav-items"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="flex items-center gap-3"
+                  >
+                    {/* Catalog button */}
+                    <button
+                      onClick={() => scrollToProject(0)}
+                      className="group relative px-4 py-2 rounded-lg transition-all duration-300 text-muted hover:text-foreground hover:bg-glass-surface"
+                    >
+                      <span className="text-sm font-semibold">Catalog</span>
+                    </button>
 
-            {/* Divider */}
-            <div className="w-px h-6 bg-glass-surface-border" />
+                    {/* Divider */}
+                    <div className="w-px h-6 bg-glass-surface-border" />
 
-            {/* Project numbers */}
-            {projects.map((project, index) => (
-              <button
-                key={project.id}
-                onClick={() => scrollToProject(index + 1)}
-                className={`group relative px-4 py-2 rounded-lg transition-all duration-300 ${
-                  activeProject === index + 1
-                    ? "bg-primary/20 text-primary"
-                    : "text-muted hover:text-foreground hover:bg-glass-surface"
-                }`}
-              >
-                {/* Project number */}
-                <span className="text-sm font-semibold">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                
-                {/* Active indicator */}
-                {activeProject === index + 1 && (
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full" />
+                    {/* Project numbers */}
+                    {projects.map((project, index) => (
+                      <button
+                        key={project.id}
+                        onClick={() => scrollToProject(index + 1)}
+                        className={`group relative px-4 py-2 rounded-lg transition-all duration-300 ${
+                          activeProject === index + 1
+                            ? "bg-primary/20 text-primary"
+                            : "text-muted hover:text-foreground hover:bg-glass-surface"
+                        }`}
+                      >
+                        {/* Project number */}
+                        <span className="text-sm font-semibold">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        
+                        {/* Active indicator */}
+                        {activeProject === index + 1 && (
+                          <motion.div
+                            layoutId="activeProjectIndicator"
+                            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-primary rounded-full"
+                            transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                          />
+                        )}
+
+                        {/* Tooltip with project title */}
+                        <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-black/90 text-white text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                          {project.title}
+                          <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black/90 rotate-45" />
+                        </div>
+                      </button>
+                    ))}
+                  </motion.div>
                 )}
+              </AnimatePresence>
+            </motion.div>
 
-                {/* Tooltip with project title */}
-                <div className="absolute top-full mt-2 left-1/2 -translate-x-1/2 px-3 py-1.5 rounded-lg bg-black/90 text-white text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
-                  {project.title}
-                  <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black/90 rotate-45" />
-                </div>
-              </button>
-            ))}
-          </div>
+            {/* Center - Navigation links (visible only in catalog mode) */}
+            <AnimatePresence mode="wait">
+              {isCatalog && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="hidden md:flex items-center gap-6"
+                >
+                  <button
+                    onClick={() => scrollToProject(0)}
+                    className="text-sm font-medium text-primary transition-colors"
+                  >
+                    Catalog
+                  </button>
+                  {projects.map((project, index) => (
+                    <button
+                      key={project.id}
+                      onClick={() => scrollToProject(index + 1)}
+                      className="text-sm font-medium text-muted hover:text-primary transition-colors"
+                    >
+                      {project.title}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
 
-          {/* Right side - Theme toggle & Home */}
-          <div className="flex items-center gap-3">
-            {/* Theme toggle */}
-            <ThemeToggle />
-
-            {/* Home button */}
-            <Link
-              href="/"
-              className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-main text-white font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all"
+            {/* Right side - Theme + Home */}
+            <motion.div
+              className="flex items-center gap-3"
             >
-              <Home className="w-4 h-4" />
-              <span>Home</span>
-            </Link>
+              <ThemeToggle />
+              <Link
+                href="/"
+                className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-main text-white font-semibold hover:shadow-lg hover:shadow-primary/30 transition-all"
+              >
+                <Home className="w-4 h-4" />
+                <span>Home</span>
+              </Link>
+            </motion.div>
           </div>
-        </div>
-      </div>
-    </nav>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </motion.nav>
   );
 }
