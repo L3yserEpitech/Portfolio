@@ -32,12 +32,12 @@ export default function Experience() {
       y: 0,
       scale: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 15,
         stiffness: 200
       }
     }
-  };
+  } as const;
 
   return (
     <section id="experience" className="py-20">

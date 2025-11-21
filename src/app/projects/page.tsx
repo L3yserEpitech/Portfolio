@@ -4,12 +4,12 @@ import { projects } from "@/data/mock";
 import { motion, AnimatePresence } from "framer-motion";
 import { Github, ExternalLink, Play, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import ProjectsNavbar from "@/components/ProjectsNavbar";
 import ProjectCard from "@/components/ProjectCard";
 import { useSearchParams } from "next/navigation";
 
-export default function ProjectsPage() {
+function ProjectsContent() {
   const searchParams = useSearchParams();
   const [activeGallery, setActiveGallery] = useState<number | null>(null);
   const [galleryIndex, setGalleryIndex] = useState(0);
@@ -417,5 +417,20 @@ export default function ProjectsPage() {
         })()}
       </AnimatePresence>
     </div>
+  );
+}
+
+export default function ProjectsPage() {
+  return (
+    <Suspense fallback={
+      <div className="h-screen w-screen flex items-center justify-center bg-background">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+          <p className="text-muted">Loading projects...</p>
+        </div>
+      </div>
+    }>
+      <ProjectsContent />
+    </Suspense>
   );
 }
