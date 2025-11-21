@@ -1,7 +1,7 @@
 "use client";
 
 import { projects } from "@/data/mock";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Github, ExternalLink, Play, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -32,6 +32,23 @@ export default function ProjectsPage() {
       }
     }
   }, [searchParams]);
+  
+  // Keyboard navigation for gallery
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (activeGallery === null) return;
+      
+      const project = projects.find(p => p.id === activeGallery);
+      if (!project) return;
+
+      if (e.key === "Escape") closeGallery();
+      if (e.key === "ArrowRight") nextImage(project.gallery.length);
+      if (e.key === "ArrowLeft") prevImage(project.gallery.length);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeGallery]);
 
   const openGallery = (projectId: number) => {
     setActiveGallery(projectId);
@@ -289,52 +306,116 @@ export default function ProjectsPage() {
       ))}
 
       {/* Gallery Modal */}
-      {activeGallery !== null && (
-        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-6">
-          <button
-            onClick={closeGallery}
-            className="absolute top-6 right-6 p-2 rounded-full bg-glass-surface border border-glass-surface-border hover:border-primary/50 transition-all"
-          >
-            <X className="w-6 h-6" />
-          </button>
+      <AnimatePresence>
+        {activeGallery !== null && (() => {
+          const project = projects.find(p => p.id === activeGallery);
+          if (!project || !project.gallery.length) return null;
 
-          {(() => {
-            const project = projects.find(p => p.id === activeGallery);
-            if (!project) return null;
+          return (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-10"
+              onClick={closeGallery}
+            >
+              {/* Close button */}
+              <motion.button
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ delay: 0.1 }}
+                onClick={closeGallery}
+                className="absolute top-4 right-4 md:top-8 md:right-8 p-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 hover:border-white/40 transition-all z-10 group"
+              >
+                <X className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:rotate-90 transition-transform duration-300" />
+              </motion.button>
 
-            return (
-              <>
-                <button
-                  onClick={() => prevImage(project.gallery.length)}
-                  className="absolute left-6 p-3 rounded-full bg-glass-surface border border-glass-surface-border hover:border-primary/50 transition-all"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
+              {/* Navigation buttons */}
+              {project.gallery.length > 1 && (
+                <>
+                  <motion.button
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ delay: 0.15 }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      prevImage(project.gallery.length);
+                    }}
+                    className="absolute left-4 md:left-8 p-3 md:p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 hover:border-primary/50 transition-all z-10 group"
+                  >
+                    <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:-translate-x-1 transition-transform" />
+                  </motion.button>
 
-                <div className="relative max-w-5xl w-full aspect-video">
-                  <Image
-                    src={project.gallery[galleryIndex]}
-                    alt={`${project.title} gallery ${galleryIndex + 1}`}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
+                  <motion.button
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ delay: 0.15 }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      nextImage(project.gallery.length);
+                    }}
+                    className="absolute right-4 md:right-8 p-3 md:p-4 rounded-full bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 hover:border-primary/50 transition-all z-10 group"
+                  >
+                    <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-white group-hover:translate-x-1 transition-transform" />
+                  </motion.button>
+                </>
+              )}
 
-                <button
-                  onClick={() => nextImage(project.gallery.length)}
-                  className="absolute right-6 p-3 rounded-full bg-glass-surface border border-glass-surface-border hover:border-primary/50 transition-all"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
+              {/* Image container */}
+              <div 
+                className="relative w-full h-full flex items-center justify-center"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <AnimatePresence mode="wait" custom={galleryIndex}>
+                  <motion.div
+                    key={galleryIndex}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    className="relative w-full h-full max-w-6xl max-h-[85vh] flex items-center justify-center"
+                  >
+                    <Image
+                      src={project.gallery[galleryIndex]}
+                      alt={`${project.title} - Image ${galleryIndex + 1}`}
+                      fill
+                      className="object-contain rounded-lg"
+                      quality={100}
+                      priority
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-muted">
-                  {galleryIndex + 1} / {project.gallery.length}
-                </div>
-              </>
-            );
-          })()}
-        </div>
-      )}
+              {/* Counter */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ delay: 0.2 }}
+                className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base font-medium"
+              >
+                {galleryIndex + 1} / {project.gallery.length}
+              </motion.div>
+
+              {/* Project title */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ delay: 0.2 }}
+                className="absolute top-6 md:top-10 left-6 md:left-10 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm md:text-base font-semibold"
+              >
+                {project.title}
+              </motion.div>
+            </motion.div>
+          );
+        })()}
+      </AnimatePresence>
     </div>
   );
 }

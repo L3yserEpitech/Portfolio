@@ -22,6 +22,7 @@ export const projects = [
     category: "Blockchain",
     image: "/esportoracle3.png",
     gallery: [
+      "/esportoracle3.png",
       "/esportoracle1.png",
       "/esportoracle2.png",
     ],
@@ -42,6 +43,7 @@ export const projects = [
     category: "Esports Journalism",
     image: "/esportnews1.png",
     gallery: [
+      "/esportnews1.png",
       "/esportnews2.png",
       "/esportnews3.png",
       "/esportnews4.png",
@@ -63,6 +65,7 @@ export const projects = [
     category: "DeFi & Blockchain",
     image: "/aiagent1.png",
     gallery: [
+      "/aiagent1.png"
     ],
     links: {
       github: "https://github.com/dujardin09/Agent-Crypto-Flow",
@@ -80,7 +83,9 @@ export const projects = [
     tags: ["Next.js", "React", "TypeScript", "FastAPI", "PostgreSQL", "Docker", "Tailwind CSS", "JWT", "SQLAlchemy"],
     category: "Platform",
     image: "/jebincubator.png",
-    gallery: [],
+    gallery: [
+      "/jebincubator.png"
+    ],
     links: {
       demo: "#",
     },
@@ -96,6 +101,7 @@ export const projects = [
     category: "Automation Platform",
     image: "/area1.png",
     gallery: [
+      "/area1.png",
       "/area2.png",
       "/area3.png",
     ],
