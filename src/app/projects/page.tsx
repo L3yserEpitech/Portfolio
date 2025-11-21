@@ -64,7 +64,7 @@ export default function ProjectsPage() {
         {/* Grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
-        <div className="container mx-auto px-6 pt-[30vh] pb-32 relative z-10">
+        <div className="container mx-auto px-6 pt-40 md:pt-[30vh] pb-32 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
