@@ -54,7 +54,7 @@ export default function Home() {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false }}
-              href="#" 
+              href="/projects" 
               className="text-primary font-medium hover:underline flex items-center gap-2 text-lg"
             >
               View All Projects

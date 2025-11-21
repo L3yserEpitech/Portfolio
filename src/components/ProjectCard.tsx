@@ -10,7 +10,12 @@ interface ProjectCardProps {
     description: string;
     tags: string[];
     image: string;
-    link: string;
+    category?: string;
+    links?: {
+      github?: string;
+      website?: string;
+      demo?: string;
+    };
   };
   index: number;
 }
@@ -55,7 +60,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           {/* Floating Action Button */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <a 
-              href={project.link}
+              href="/projects"
               className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-primary/90 flex items-center gap-2 shadow-lg shadow-primary/20"
             >
               View Details
