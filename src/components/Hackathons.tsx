@@ -18,17 +18,6 @@ export default function Hackathons() {
           >
             Hackathons & <span className="text-gradient">Events</span>
           </motion.h2>
-
-          <motion.a 
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
-            href="#" 
-            className="text-primary font-medium hover:underline flex items-center gap-2 text-lg"
-          >
-            View All Events
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-          </motion.a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

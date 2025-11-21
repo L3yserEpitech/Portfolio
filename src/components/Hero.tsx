@@ -5,9 +5,11 @@ import { motion } from "framer-motion";
 import { ArrowRight, Github, Linkedin, Twitter, Code2, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Hero() {
   const [hoveredCoin, setHoveredCoin] = useState<string | null>(null);
+  const { theme } = useTheme();
   const [activeCoin, setActiveCoin] = useState<string>('btc');
 
   const coins = ['btc', 'pol', 'eth', 'usdc', 'avax', 'cosmos'];
@@ -286,6 +288,23 @@ export default function Hero() {
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
               </span>
               <span className="text-sm font-semibold">Available for work</span>
+            </motion.div>
+
+            {/* PoC Logo */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="mt-4"
+            >
+              <Image
+                src={theme === "dark" ? "/logo_poc_white.png" : "/logo_poc_black.png"}
+                alt="PoC Innovation"
+                width={80}
+                height={80}
+                className="object-contain"
+              />
             </motion.div>
           </motion.div>
         </div>
