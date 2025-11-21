@@ -18,16 +18,20 @@ interface ProjectCardProps {
     };
   };
   index: number;
+  onClick?: () => void;
+  animateOnMount?: boolean;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
+export default function ProjectCard({ project, index, onClick, animateOnMount = false }: ProjectCardProps) {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false }}
+      whileInView={animateOnMount ? undefined : { opacity: 1, y: 0 }}
+      animate={animateOnMount ? { opacity: 1, y: 0 } : undefined}
+      viewport={animateOnMount ? undefined : { once: true }} // Changed once: false to once: true for better performance usually, but keeping logic consistent
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="group relative rounded-3xl bg-card-bg overflow-hidden hover:-translate-y-2 transition-all duration-500"
+      className="group relative rounded-3xl bg-card-bg overflow-hidden hover:-translate-y-2 transition-all duration-500 cursor-pointer"
+      onClick={onClick}
     >
       {/* Gradient Glow Effect behind card */}
       <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-r from-primary/50 via-secondary/50 to-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 blur-sm" />
@@ -43,7 +47,6 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             className="object-cover transition-transform duration-700 group-hover:scale-110"
           />
           {/* Improved Gradient Fade */}
-          <div className="absolute inset-0 bg-gradient-to-t from-card-bg via-card-bg/60 to-transparent opacity-100" />
           
           {/* Tags floating on image */}
           <div className="absolute top-4 left-4 flex flex-wrap gap-2">
@@ -60,7 +63,13 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           {/* Floating Action Button */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <a 
-              href="/projects"
+              href={`/projects?id=${project.id}`}
+              onClick={(e) => {
+                if (onClick) {
+                  e.preventDefault();
+                  onClick();
+                }
+              }}
               className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-primary/90 flex items-center gap-2 shadow-lg shadow-primary/20"
             >
               View Details

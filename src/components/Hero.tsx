@@ -39,9 +39,6 @@ export default function Hero() {
       {/* Floating orbs */}
       <motion.div 
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.15 }}
-        viewport={{ once: false }}
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-[120px]"
         animate={{
           opacity: 0.15,
           scale: [1, 1.2, 1],
@@ -203,7 +200,7 @@ export default function Hero() {
               className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mb-10"
             >
               <a 
-                href="#projects"
+                href="/projects"
                 className="group w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-main text-white font-bold text-lg shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 transition-all hover:-translate-y-0.5 flex items-center justify-center gap-2"
               >
                 Explore My Work

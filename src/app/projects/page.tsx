@@ -4,12 +4,34 @@ import { projects } from "@/data/mock";
 import { motion } from "framer-motion";
 import { Github, ExternalLink, Play, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProjectsNavbar from "@/components/ProjectsNavbar";
+import ProjectCard from "@/components/ProjectCard";
+import { useSearchParams } from "next/navigation";
 
 export default function ProjectsPage() {
+  const searchParams = useSearchParams();
   const [activeGallery, setActiveGallery] = useState<number | null>(null);
   const [galleryIndex, setGalleryIndex] = useState(0);
+
+  useEffect(() => {
+    const projectId = searchParams.get("id");
+    if (projectId) {
+      const index = projects.findIndex((p) => p.id === Number(projectId));
+      if (index !== -1) {
+        // Delay to ensure DOM is ready and layout is stable
+        setTimeout(() => {
+          const scrollContainer = document.querySelector('.h-screen.overflow-y-scroll');
+          if (scrollContainer) {
+            scrollContainer.scrollTo({
+              top: (index + 1) * window.innerHeight,
+              behavior: "smooth",
+            });
+          }
+        }, 100);
+      }
+    }
+  }, [searchParams]);
 
   const openGallery = (projectId: number) => {
     setActiveGallery(projectId);
@@ -35,18 +57,17 @@ export default function ProjectsPage() {
       <ProjectsNavbar projects={projects} />
       
       {/* Catalog Section - First Step */}
-      <section className="h-screen snap-start flex items-center justify-center relative overflow-hidden">
+      <section className="min-h-screen snap-start flex flex-col justify-start relative">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent" />
         
         {/* Grid background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
-        <div className="container mx-auto px-6 py-32 relative z-10">
+        <div className="container mx-auto px-6 pt-[30vh] pb-32 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
@@ -60,12 +81,11 @@ export default function ProjectsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
             {projects.map((project, idx) => (
-              <motion.button
+              <ProjectCard
                 key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                project={project}
+                index={idx}
+                animateOnMount={true}
                 onClick={() => {
                   const scrollContainer = document.querySelector('.h-screen.overflow-y-scroll');
                   if (scrollContainer) {
@@ -75,58 +95,7 @@ export default function ProjectsPage() {
                     });
                   }
                 }}
-                className="group relative rounded-2xl overflow-hidden bg-card-bg border border-glass-surface-border hover:border-primary/50 transition-all hover:-translate-y-1"
-              >
-                {/* Project Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card-bg via-card-bg/60 to-transparent" />
-                  
-                  {/* Category badge */}
-                  <div className="absolute top-3 right-3">
-                    <span className="px-2 py-1 rounded-lg bg-glass-surface border border-glass-surface-border text-primary text-xs font-semibold backdrop-blur-sm">
-                      {project.category}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Project Info */}
-                <div className="p-4">
-                  <h3 className="text-xl font-heading font-bold mb-2 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-muted line-clamp-2 mb-3">
-                    {project.description}
-                  </p>
-                  
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tags.slice(0, 3).map((tag, tagIdx) => (
-                      <span
-                        key={tagIdx}
-                        className="text-xs px-2 py-0.5 rounded bg-glass-surface border border-glass-surface-border"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                    {project.tags.length > 3 && (
-                      <span className="text-xs px-2 py-0.5 text-muted">
-                        +{project.tags.length - 3}
-                      </span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Hover overlay */}
-                <div className="absolute inset-0 flex items-center justify-center bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="text-white font-semibold">View Project</span>
-                </div>
-              </motion.button>
+              />
             ))}
           </div>
         </div>
@@ -134,8 +103,7 @@ export default function ProjectsPage() {
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: false }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
           className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
@@ -145,7 +113,7 @@ export default function ProjectsPage() {
               <motion.div
                 animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                className="w-1 h-2 bg-current rounded-full mx-auto"
+                className="w-full h-2 bg-current rounded-full"
               />
             </div>
           </motion.div>
@@ -182,7 +150,6 @@ export default function ProjectsPage() {
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   
                   {/* Status badge */}
                   <div className="absolute top-4 right-4">
@@ -302,7 +269,7 @@ export default function ProjectsPage() {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: false }}
+              viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 1, delay: 0.8 }}
               className="absolute bottom-8 left-1/2 -translate-x-1/2"
             >

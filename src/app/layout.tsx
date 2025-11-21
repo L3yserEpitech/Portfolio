@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -27,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${outfit.variable} ${spaceGrotesk.variable} antialiased font-sans`}
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );
