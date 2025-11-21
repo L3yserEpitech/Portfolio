@@ -140,7 +140,7 @@ export default function ProjectsPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.6 }}
-                className="relative"
+                className="relative mt-32 lg:mt-0"
               >
                 {/* Main image */}
                 <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 border border-glass-surface-border">

@@ -13,7 +13,15 @@ interface ProjectsNavbarProps {
 export default function ProjectsNavbar({ projects }: ProjectsNavbarProps) {
   const [activeProject, setActiveProject] = useState(0); // 0 = Catalog, 1+ = Projects
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const isCatalog = activeProject === 0;
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,7 +57,7 @@ export default function ProjectsNavbar({ projects }: ProjectsNavbarProps) {
   return (
     <motion.nav
       animate={{
-        top: isCatalog ? 0 : 80,
+        top: isMobile ? 20 : (isCatalog ? 0 : 80),
       }}
       transition={{ duration: 0.5, ease: "easeInOut" }}
       className="fixed left-0 right-0 z-50"

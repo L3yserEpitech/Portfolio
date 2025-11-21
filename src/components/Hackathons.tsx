@@ -54,13 +54,14 @@ export default function Hackathons() {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card-bg via-card-bg/60 to-transparent" />
                   
                   {/* Award Badge */}
-                  <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-yellow-500/20 backdrop-blur-md border border-yellow-500/50 text-yellow-500 text-xs font-bold flex items-center gap-1">
-                    <Trophy className="w-3 h-3" />
-                    {event.award}
-                  </div>
+                  {event.award && (
+                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-yellow-500/20 backdrop-blur-md border border-yellow-500/50 text-yellow-500 text-xs font-bold flex items-center gap-1">
+                      <Trophy className="w-3 h-3" />
+                      {event.award}
+                    </div>
+                  )}
 
                   {/* Floating Action Button */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
