@@ -215,20 +215,20 @@ export const services = [
 export const hackathons = [
   {
     id: 1,
+    name: "SUI Hackathon Paris",
+    date: "November 2025",
+    location: "Paris, France",
+    description: "Developed SAIL, a no-code flashloan builder with integrated marketplace. Finished 3rd place.",
+    image: "/suilogo.png",
+    award: "3rd Place",
+  },
+  {
+    id: 2,
     name: "ETH Global Cannes",
     date: "July 2025",
     location: "Cannes, France",
     description: "Developed Agent Crypto Flow, an AI-powered DeFi assistant for the Flow blockchain.",
     image: "/ethglobalcannes2025.png",
-    award: "",
-  },
-  {
-    id: 2,
-    name: "SUI Hackathon Paris",
-    date: "November 2025",
-    location: "Paris, France",
-    description: "Upcoming participation in the SUI blockchain hackathon.",
-    image: "/suilogo.png",
     award: "",
   },
 ];

@@ -43,14 +43,6 @@ export default function Hackathons() {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  
-                  {/* Award Badge */}
-                  {event.award && (
-                    <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-yellow-500/20 backdrop-blur-md border border-yellow-500/50 text-yellow-500 text-xs font-bold flex items-center gap-1">
-                      <Trophy className="w-3 h-3" />
-                      {event.award}
-                    </div>
-                  )}
 
                   {/* Floating Action Button */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -64,8 +56,17 @@ export default function Hackathons() {
                   </div>
                 </div>
 
-                <div className="p-6 pt-2 relative z-10">
-                  <h3 className="text-2xl font-bold mb-2 group-hover:text-primary transition-colors mt-2">{event.name}</h3>
+                <div className="p-6 pt-5 relative z-10">
+                  {/* Award Badge and Title */}
+                  <div className="flex items-center justify-between gap-2.5 mb-4">
+                    <h3 className="text-2xl font-bold group-hover:text-primary transition-colors flex-1">{event.name}</h3>
+                    {event.award && (
+                      <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-yellow-500/20 backdrop-blur-md border border-yellow-500/50 text-yellow-500 text-xs font-bold">
+                        <Trophy className="w-3 h-3" />
+                        {event.award}
+                      </div>
+                    )}
+                  </div>
                   
                   <div className="flex flex-col gap-2 mb-4 text-sm text-muted">
                     <div className="flex items-center gap-2">
