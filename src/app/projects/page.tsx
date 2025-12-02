@@ -178,21 +178,40 @@ function ProjectsContent() {
 
                 {/* Gallery thumbnails */}
                 <div className="mt-4 grid grid-cols-4 gap-3">
-                  {project.gallery.map((img, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => openGallery(project.id)}
-                      className="relative aspect-video rounded-lg overflow-hidden border border-glass-surface-border hover:border-primary/50 transition-all group cursor-pointer"
-                    >
-                      <Image
-                        src={img}
-                        alt={`${project.title} gallery ${idx + 1}`}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
-                    </button>
-                  ))}
+                  {project.gallery.map((media, idx) => {
+                    const isVideo = media.match(/\.(mov|mp4|webm|ogg)$/i);
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => openGallery(project.id)}
+                        className="relative aspect-video rounded-lg overflow-hidden border border-glass-surface-border hover:border-primary/50 transition-all group cursor-pointer"
+                      >
+                        {isVideo ? (
+                          <>
+                            <video
+                              src={media}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                              muted
+                              playsInline
+                            />
+                            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                              <Play className="w-8 h-8 text-white opacity-80" />
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <Image
+                              src={media}
+                              alt={`${project.title} gallery ${idx + 1}`}
+                              fill
+                              className="object-cover group-hover:scale-110 transition-transform duration-300"
+                            />
+                            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
+                          </>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
               </motion.div>
 
@@ -360,7 +379,7 @@ function ProjectsContent() {
                 </>
               )}
 
-              {/* Image container */}
+              {/* Media container */}
               <div 
                 className="relative w-full h-full flex items-center justify-center"
                 onClick={(e) => e.stopPropagation()}
@@ -374,14 +393,24 @@ function ProjectsContent() {
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     className="relative w-full h-full max-w-6xl max-h-[85vh] flex items-center justify-center"
                   >
-                    <Image
-                      src={project.gallery[galleryIndex]}
-                      alt={`${project.title} - Image ${galleryIndex + 1}`}
-                      fill
-                      className="object-contain rounded-lg"
-                      quality={100}
-                      priority
-                    />
+                    {project.gallery[galleryIndex].match(/\.(mov|mp4|webm|ogg)$/i) ? (
+                      <video
+                        src={project.gallery[galleryIndex]}
+                        controls
+                        autoPlay
+                        className="w-full h-full max-w-6xl max-h-[85vh] object-contain rounded-lg"
+                        playsInline
+                      />
+                    ) : (
+                      <Image
+                        src={project.gallery[galleryIndex]}
+                        alt={`${project.title} - Image ${galleryIndex + 1}`}
+                        fill
+                        className="object-contain rounded-lg"
+                        quality={100}
+                        priority
+                      />
+                    )}
                   </motion.div>
                 </AnimatePresence>
               </div>

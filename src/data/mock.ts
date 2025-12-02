@@ -15,6 +15,29 @@ export const profile = {
 export const projects = [
   {
     id: 1,
+    title: "SAIL - Sui Automated Investment Lab",
+    description: "No-code builder for automated flashloans and DeFi strategies on Sui blockchain with integrated marketplace.",
+    fullDescription: "SAIL is a no-code DeFi strategy builder on Sui that enables anyone to create, simulate, and execute flashloans and complex strategies without writing Move code. Flashloans are now accessible to everyone. The platform features multi-protocol support (Navi, Cetus, Turbos), automatic Hot Potato pattern handling, and a marketplace where creators can encrypt and sell strategies using Seal and Walrus.",
+    tags: ["Move", "Sui Blockchain", "TypeScript", "React", "Next.js", "PTB", "Flashloans", "DeFi", "No-Code", "Marketplace", "Seal", "Walrus", "Navi Protocol", "Cetus", "Web3"],
+    category: "DeFi & Blockchain",
+    image: "/sail1.png",
+    gallery: [
+      "/sail1.png",
+      "/sail0.mov",
+      "/sail2.png",
+      "/sail3.png",
+      "/sail4.png",
+    ],
+    links: {
+      github: "https://github.com/L3yserEpitech/Sail-hackaton-SUI-",
+      website: "#",
+      demo: "#",
+    },
+    year: "2025",
+    status: "Live",
+  },
+  {
+    id: 2,
     title: "Esport Oracle",
     description: "Decentralized oracle for CS Go 2 esport tournaments. Bridges esports data with blockchain smart contracts.",
     fullDescription: "Esport Oracle is a decentralized oracle developed by PoC Innovation that bridges Counter-Strike 2 esports data with blockchain smart contracts. It securely and verifiably transfers match results, player statistics, and tournament details onto the blockchain. The system features a Solidity-based smart contract with staking and consensus mechanisms, and a Go-based data provider that fetches real-time data from the PandaScore API.",
@@ -35,7 +58,7 @@ export const projects = [
     status: "Live",
   },
   {
-    id: 2,
+    id: 3,
     title: "Esport News",
     description: "Esports journalism platform aggregating competitive gaming news, tournament coverage, and live match schedules across 10 major titles.",
     fullDescription: "Esport News is a comprehensive esports journalism platform covering over 10 major titles including Valorant, CS2, and LoL. It combines editorial content with real-time tournament data from PandaScore. The platform features a Next.js frontend and a Go service layer for high-performance data syncing, optimized for SEO and offering a centralized hub for news, stats, and match schedules.",
@@ -57,7 +80,7 @@ export const projects = [
     status: "Live",
   },
   {
-    id: 3,
+    id: 4,
     title: "Agent Crypto Flow",
     description: "Agent IA conversationnel permettant d'effectuer des opérations DeFi sur la blockchain Flow via une interface de chat intuitive. L'agent comprend le langage naturel et exécute automatiquement des transactions de staking, swap de tokens, gestion de vaults et vérification de balances.",
     fullDescription: "Agent Crypto Flow est un assistant intelligent qui révolutionne l'interaction avec la blockchain Flow. Grâce à une interface de chat intuitive alimentée par l'IA, il permet d'effectuer des opérations financières complexes comme le staking, les échanges de tokens et la gestion de portefeuille en utilisant simplement le langage naturel. L'agent analyse vos demandes, propose les actions appropriées et sécurise chaque transaction, rendant la DeFi accessible aussi bien aux experts qu'aux débutants.",
@@ -76,7 +99,7 @@ export const projects = [
     status: "Live",
   },
   {
-    id: 4,
+    id: 5,
     title: "JEB Incubator",
     description: "Plateforme digitale complète pour l'incubation et le développement de startups innovantes. Connecte entrepreneurs, investisseurs et partenaires pour faciliter la création, le financement et la croissance des entreprises émergentes.",
     fullDescription: "JEB Incubator est une plateforme digitale complète dédiée à l'incubation et au développement de startups innovantes. C'est un écosystème numérique qui connecte les entrepreneurs, les investisseurs et les partenaires pour faciliter la création, le financement et la croissance des entreprises émergentes. La plateforme offre des outils modernes incluant un système de messagerie intégré, un catalogue de projets avec recherche avancée, des analytics détaillés, une gestion d'événements et des tableaux de bord personnalisés pour startups, investisseurs et administrateurs.",
@@ -93,7 +116,7 @@ export const projects = [
     status: "Live",
   },
   {
-    id: 5,
+    id: 6,
     title: "VanciArea",
     description: "Plateforme d'automatisation complète de type IFTTT/Zapier permettant de créer des workflows personnalisés reliant différents services externes via une interface visuelle intuitive.",
     fullDescription: "VanciArea est une plateforme d'automatisation visuelle type IFTTT permettant de créer des workflows par glisser-déposer. Elle intègre 9 services majeurs (GitHub, Gmail, OpenAI...) via OAuth2 avec exécution temps réel. L'architecture repose sur une stack moderne : Node.js/Express, PostgreSQL, Next.js 15 et React Native, incluant un moteur de templates et un scheduler performant.",
