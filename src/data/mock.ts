@@ -3,7 +3,7 @@ export const profile = {
   title: "Web3 Fullstack Developer",
   subtitle: "Epitech Student | Blockchain & Finance Enthusiast",
   badge: "Web3/Fullstack Developer & Blockchain Enthusiast",
-  description: "Responsable blockchain at PoC Innovation. 3rd year student at Epitech, specializing in fullstack development and blockchain technology. I create decentralized applications that bridge traditional finance with Web3.",
+  description: "Blockchain Head & R&D Developer at PoC Innovation. 3rd year student at Epitech, specializing in fullstack development and blockchain technology. I create decentralized applications that bridge traditional finance with Web3.",
   bio: "I build decentralized applications and financial tools. Passionate about the intersection of finance and technology.",
   socials: {
     github: "https://github.com/L3yserEpitech",
