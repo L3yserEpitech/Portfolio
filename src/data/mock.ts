@@ -82,8 +82,8 @@ export const projects = [
   {
     id: 4,
     title: "Agent Crypto Flow",
-    description: "Agent IA conversationnel permettant d'effectuer des opérations DeFi sur la blockchain Flow via une interface de chat intuitive. L'agent comprend le langage naturel et exécute automatiquement des transactions de staking, swap de tokens, gestion de vaults et vérification de balances.",
-    fullDescription: "Agent Crypto Flow est un assistant intelligent qui révolutionne l'interaction avec la blockchain Flow. Grâce à une interface de chat intuitive alimentée par l'IA, il permet d'effectuer des opérations financières complexes comme le staking, les échanges de tokens et la gestion de portefeuille en utilisant simplement le langage naturel. L'agent analyse vos demandes, propose les actions appropriées et sécurise chaque transaction, rendant la DeFi accessible aussi bien aux experts qu'aux débutants.",
+    description: "Conversational AI agent enabling DeFi operations on the Flow blockchain through an intuitive chat interface. The agent understands natural language and automatically executes staking transactions, token swaps, vault management, and balance checks.",
+    fullDescription: "Agent Crypto Flow is an intelligent assistant that revolutionizes interaction with the Flow blockchain. Through an intuitive AI-powered chat interface, it enables complex financial operations like staking, token exchanges, and portfolio management using simple natural language. The agent analyzes your requests, suggests appropriate actions, and secures each transaction, making DeFi accessible to both experts and beginners.",
     tags: ["Python", "Next.js", "React", "TypeScript", "OpenAI", "uAgents", "Flow Blockchain", "FCL", "DeFi", "AI Agent", "Blockchain", "Web3"],
     category: "DeFi & Blockchain",
     image: "/aiagent1.png",
@@ -101,8 +101,8 @@ export const projects = [
   {
     id: 5,
     title: "JEB Incubator",
-    description: "Plateforme digitale complète pour l'incubation et le développement de startups innovantes. Connecte entrepreneurs, investisseurs et partenaires pour faciliter la création, le financement et la croissance des entreprises émergentes.",
-    fullDescription: "JEB Incubator est une plateforme digitale complète dédiée à l'incubation et au développement de startups innovantes. C'est un écosystème numérique qui connecte les entrepreneurs, les investisseurs et les partenaires pour faciliter la création, le financement et la croissance des entreprises émergentes. La plateforme offre des outils modernes incluant un système de messagerie intégré, un catalogue de projets avec recherche avancée, des analytics détaillés, une gestion d'événements et des tableaux de bord personnalisés pour startups, investisseurs et administrateurs.",
+    description: "Complete digital platform for incubating and developing innovative startups. Connects entrepreneurs, investors, and partners to facilitate the creation, funding, and growth of emerging companies.",
+    fullDescription: "JEB Incubator is a complete digital platform dedicated to incubating and developing innovative startups. It's a digital ecosystem that connects entrepreneurs, investors, and partners to facilitate the creation, funding, and growth of emerging companies. The platform offers modern tools including an integrated messaging system, a project catalog with advanced search, detailed analytics, event management, and customized dashboards for startups, investors, and administrators.",
     tags: ["Next.js", "React", "TypeScript", "FastAPI", "PostgreSQL", "Docker", "Tailwind CSS", "JWT", "SQLAlchemy"],
     category: "Platform",
     image: "/jebincubator.png",
@@ -118,8 +118,8 @@ export const projects = [
   {
     id: 6,
     title: "VanciArea",
-    description: "Plateforme d'automatisation complète de type IFTTT/Zapier permettant de créer des workflows personnalisés reliant différents services externes via une interface visuelle intuitive.",
-    fullDescription: "VanciArea est une plateforme d'automatisation visuelle type IFTTT permettant de créer des workflows par glisser-déposer. Elle intègre 9 services majeurs (GitHub, Gmail, OpenAI...) via OAuth2 avec exécution temps réel. L'architecture repose sur une stack moderne : Node.js/Express, PostgreSQL, Next.js 15 et React Native, incluant un moteur de templates et un scheduler performant.",
+    description: "Complete IFTTT/Zapier-style automation platform enabling the creation of custom workflows connecting different external services through an intuitive visual interface.",
+    fullDescription: "VanciArea is an IFTTT-style visual automation platform that enables drag-and-drop workflow creation. It integrates 9 major services (GitHub, Gmail, OpenAI...) via OAuth2 with real-time execution. The architecture is built on a modern stack: Node.js/Express, PostgreSQL, Next.js 15, and React Native, including a template engine and a high-performance scheduler.",
     tags: ["Node.js", "Next.js", "React", "PostgreSQL", "Prisma", "Socket.IO", "ReactFlow", "Docker", "OAuth2", "Automation", "WebSocket", "TypeScript"],
     category: "Automation Platform",
     image: "/area1.png",
@@ -139,7 +139,7 @@ export const projects = [
 export const skills = [
   {
     category: "Blockchain",
-    items: ["Solidity", "Move (SUI)", "Rust (Beginner)"],
+    items: ["Solidity", "Move (SUI)", "Rust-Beginner", "Cairo-Beginner"],
   },
   {
     category: "Fullstack",

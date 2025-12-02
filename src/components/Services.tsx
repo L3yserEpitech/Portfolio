@@ -17,7 +17,7 @@ const services = [
   {
     title: "Fullstack Engineering",
     description: "Building robust and scalable web applications. Mastering the entire stack from high-performance backends with Go/Node.js to responsive frontends with React/Next.js.",
-    keywords: ["React/Next.js", "Node.js/NestJS", "PostgreSQL", "Microservices", "Cloud Native"],
+    keywords: ["React/Next.js/Nuxt", "Node.js/NestJS/Go", "PostgreSQL", "Docker"],
     icon: (
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
         <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
